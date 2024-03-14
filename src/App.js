@@ -5,6 +5,8 @@ import ProductList from "./ProductList";
 import { Container, Row, Col } from "react-bootstrap";
 
 function App() {
+  let titleProduct = "Product List";
+  let titleCategory = "Category List";
   return (
     <div>
       <Container>
@@ -13,10 +15,10 @@ function App() {
         </Row>
         <Row>
           <Col xs="3">
-            <CategoryList />
+            <CategoryList title={titleCategory} />
           </Col>
           <Col xs="9">
-            <ProductList />
+            <ProductList title={titleProduct} />
           </Col>
         </Row>
       </Container>

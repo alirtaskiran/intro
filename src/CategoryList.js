@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
 export default class CategoryList extends Component {
+  constructor(props) {
+    super(props);
+    state: {};
+  }
+
   render() {
     return (
       <div>
-        <h2>CategoryList Component</h2>
+        <h2>{this.props.title}</h2>
         <ListGroup>
           <ListGroupItem>Cras justo odio</ListGroupItem>
           <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
