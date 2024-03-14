@@ -8,7 +8,8 @@ export default class ProductList extends Component {
   render() {
     return (
       <div>
-        <h2>{this.props.title}</h2>
+        <h2>{this.props.info.title}</h2>
+        <h4>{this.props.info.baskaBirSey}</h4>
       </div>
     )
   }
