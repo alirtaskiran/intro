@@ -2,17 +2,18 @@ import React, { Component } from "react";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
 export default class CategoryList extends Component {
   state = {
-    categories: [
-      { categoryId: 1, categoryName: "Beverages" },
-      { categoryId: 2, categoryName: "Food" },
-      { categoryId: 3, categoryName: "Condiments" },
-    ],
-    currentCategory: "",
+    categories: [],
   };
 
-  changeCategory = (category) => {
-    this.setState({ currentCategory: category.categoryName });
+  getCategories = () => {
+    fetch("http://localhost:3000/categories")
+      .then((response) => response.json())
+      .then((data) => this.setState({ categories: data }));
   };
+
+  componentDidMount() {
+    this.getCategories();
+  }
 
   render() {
     return (
@@ -23,14 +24,14 @@ export default class CategoryList extends Component {
           <ListGroupItem>Cras justo odio</ListGroupItem>
           {this.state.categories.map((category) => (
             <ListGroupItem
-              onClick={() => this.changeCategory(category)}
-              key={category.categoryId}
+            onClick={() => this.props.changeCategory(category)}
+            key={category.id}
             >
               {category.categoryName}
             </ListGroupItem>
           ))}
         </ListGroup>
-        <h4>{this.state.currentCategory}</h4>
+        <h4>{this.props.currentCategory}</h4>
       </div>
     );
   }

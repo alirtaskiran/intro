@@ -8,6 +8,7 @@ export default class App extends Component {
   changeCategory = (category) => {
     this.setState({ currentCategory: category.categoryName });
   };
+  state = { currentCategory: "" };
   render() {
     let productInfo = { title: "Product List", baskaBirSey: "Baska bir sey" };
     let categoryInfo = { title: "Category List" };
@@ -19,10 +20,17 @@ export default class App extends Component {
           </Row>
           <Row>
             <Col xs="3">
-              <CategoryList info={categoryInfo} />
+              <CategoryList
+                currentCategory={this.state.currentCategory}
+                changeCategory={this.changeCategory}
+                info={categoryInfo}
+              />
             </Col>
             <Col xs="9">
-              <ProductList info={productInfo} />
+              <ProductList
+                currentCategory={this.state.currentCategory}
+                info={productInfo}
+              />
             </Col>
           </Row>
         </Container>
